@@ -1,16 +1,16 @@
 when defined(windows):
   when defined(nimOldDlls):
-    const Lib = "sqlite3.dll"
+    const Lib {.strdefine.} = "sqlite3.dll"
   elif defined(cpu64):
-    const Lib = "sqlite3_64.dll"
+    const Lib {.strdefine.} = "sqlite3_64.dll"
   else:
-    const Lib = "sqlite3_32.dll"
+    const Lib {.strdefine.} = "sqlite3_32.dll"
 elif defined(macosx):
   const
-    Lib = "libsqlite3(|.0).dylib"
+    Lib {.strdefine.} = "libsqlite3(|.0).dylib"
 else:
   const
-    Lib = "libsqlite3.so(|.0)"
+    Lib {.strdefine.} = "libsqlite3.so(|.0)"
 
 type
     Sqlite3* = ptr object
